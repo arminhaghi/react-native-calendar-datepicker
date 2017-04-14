@@ -11,7 +11,7 @@ import {
   Slider,
   View,
   Text,
-  TouchableHighlight,
+  TouchableOpacity,
   StyleSheet,
 } from 'react-native';
 
@@ -159,16 +159,16 @@ export default class Calendar extends Component {
         }}>
           <View style={[styles.barView, this.props.barView]}>
             { this.props.showArrows && this.state.stage === DAY_SELECTOR && previousMonthValid ?
-              <TouchableHighlight
+              <TouchableOpacity
                 hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                 underlayColor={barStyle ? barStyle.backgroundColor : 'transparent'}
                 onPress={this._previousMonth}
               >
                 <Text style={this.props.barText}>{LEFT_CHEVRON}</Text>
-              </TouchableHighlight> : <View/>
+              </TouchableOpacity> : <View/>
             }
 
-            <TouchableHighlight
+            <TouchableOpacity
               activeOpacity={this.state.stage !== YEAR_SELECTOR ? 0.8 : 1}
               underlayColor={barStyle ? barStyle.backgroundColor : 'transparent'}
               onPress={this._previousStage}
@@ -177,16 +177,16 @@ export default class Calendar extends Component {
               <Text style={this.props.barText}>
                 {this._stageText()}
               </Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
 
             { this.props.showArrows && this.state.stage === DAY_SELECTOR && nextMonthValid ?
-              <TouchableHighlight
+              <TouchableOpacity
                 hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                 underlayColor={barStyle ? barStyle.backgroundColor : 'transparent'}
                 onPress={this._nextMonth}
               >
                 <Text style={this.props.barText}>{RIGHT_CHEVRON}</Text>
-              </TouchableHighlight> : <View/>
+              </TouchableOpacity> : <View/>
             }
           </View>
         </View>
