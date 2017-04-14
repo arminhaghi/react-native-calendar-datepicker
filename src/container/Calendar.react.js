@@ -40,6 +40,8 @@ type Props = {
   // Minimum and maximum date.
   minDate: Moment,
   maxDate: Moment,
+  // Event date list
+  eventDates?: Array,
   // The starting stage for selection. Defaults to day.
   // Can be overwritten by finalStage.
   startStage: Stage,
@@ -61,6 +63,7 @@ type Props = {
   dayText?: Text.propTypes.style,
   dayTodayText?: Text.propTypes.style,
   daySelectedText?: Text.propTypes.style,
+  dayEventText?: Text.propTypes.style,
   dayDisabledText?: Text.propTypes.style,
   // Styling properties for selecting the month.
   monthText?: Text.propTypes.style,
@@ -202,6 +205,7 @@ export default class Calendar extends Component {
               monthOffset={this.state.monthOffset}
               minDate={this.props.minDate}
               maxDate={this.props.maxDate}
+              eventDates={this.props.eventDates}
               // Control properties
               slideThreshold={this.props.slideThreshold}
               // Transfer the corresponding styling properties.

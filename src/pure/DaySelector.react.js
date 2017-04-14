@@ -29,6 +29,8 @@ type Props = {
   // Minimum and maximum dates.
   minDate: Moment,
   maxDate: Moment,
+  // Event date list
+  eventDates?: Array,
   // Styling properties.
   dayHeaderView?: View.propTypes.style,
   dayHeaderText?: Text.propTypes.style,
@@ -38,6 +40,7 @@ type Props = {
   dayText?: Text.propTypes.style,
   dayTodayText?: Text.propTypes.style,
   daySelectedText?: Text.propTypes.style,
+  dayEventText?: Text.propTypes.style,
   dayDisabledText?: Text.propTypes.style,
 };
 type State = {
@@ -166,6 +169,7 @@ export default class DaySelector extends Component {
         date: iterator.date(),
         selected: props.selected && iterator.isSame(props.selected, 'day'),
         today: iterator.isSame(Moment(), 'day'),
+        hasEvent: _(props.eventDates).some(eventDate => iterator.isSame(eventDate, 'day')),
       };
       // Add it to the result here.
       iterator.add(1, 'day');
@@ -215,6 +219,7 @@ export default class DaySelector extends Component {
                     day.today ? this.props.dayTodayText : null,
                     day.selected ? styles.selectedText : null,
                     day.selected ? this.props.daySelectedText : null,
+                    day.hasEvent ? this.props.dayEventText : null,
                     day.valid ? null : styles.disabledText,
                     day.valid ? null : this.props.dayDisabledText,
                   ]}>
@@ -233,6 +238,7 @@ DaySelector.defaultProps = {
   focus: Moment().startOf('month'),
   minDate: Moment(),
   maxDate: Moment(),
+  eventDates: [],
 };
 
 const styles = StyleSheet.create({
