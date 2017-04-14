@@ -217,6 +217,7 @@ export default class Calendar extends Component {
               dayText={this.props.dayText}
               dayTodayText={this.props.dayTodayText}
               daySelectedText={this.props.daySelectedText}
+              dayEventText={this.props.dayEventText}
               dayDisabledText={this.props.dayDisabledText}
               /> :
             this.state.stage === MONTH_SELECTOR ?
