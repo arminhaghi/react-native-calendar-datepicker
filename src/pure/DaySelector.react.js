@@ -169,7 +169,7 @@ export default class DaySelector extends Component {
         date: iterator.date(),
         selected: props.selected && iterator.isSame(props.selected, 'day'),
         today: iterator.isSame(Moment(), 'day'),
-        hasEvent: _.some(props.eventDates, eventDate => iterator.toDate().getTime() === eventDate.getTime()),
+        hasEvent: _.some(props.eventDates, eventDate => iterator.format("YYYY MM DD") === eventDate.format("YYYY MM DD"))
       };
       // Add it to the result here.
       iterator.add(1, 'day');
