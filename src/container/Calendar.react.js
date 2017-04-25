@@ -36,6 +36,7 @@ type Props = {
   // The core properties.
   selected?: Moment,
   onChange?: (date: Moment) => void,
+  onFocusChange?: (date: Moment) => void,
   slideThreshold?: number,
   // Minimum and maximum date.
   minDate: Moment,
@@ -136,6 +137,7 @@ export default class Calendar extends Component {
 
   _changeFocus = (focus : Moment) : void => {
     this.setState({focus, monthOffset: 0});
+    this.props.onFocusChange && this.props.onFocusChange(focus);
     if (this.props.finalStage != DAY_SELECTOR &&
         this.state.stage == this.props.finalStage) {
       this.props.onChange && this.props.onChange(focus);
