@@ -142,7 +142,8 @@ export default class DaySelector extends Component {
 
   componentWillReceiveProps(nextProps: Object) {
     if (this.props.focus != nextProps.focus ||
-        this.props.selected != nextProps.selected) {
+        this.props.selected != nextProps.selected ||
+        this.props.eventDates != nextProps.eventDate) {
       this.setState({
         days: this._computeDays(nextProps),
       })
